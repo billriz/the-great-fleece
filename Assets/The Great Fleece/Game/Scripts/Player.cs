@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
                 _agent.SetDestination(hitInfo.point);
 
             }
-        }
+        } 
         
     }
 }
