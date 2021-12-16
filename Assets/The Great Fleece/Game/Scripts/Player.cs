@@ -8,12 +8,17 @@ public class Player : MonoBehaviour
 
     private NavMeshAgent _agent;
 
+    private Animator _anim;
+
     
     // Start is called before the first frame update
     void Start()
     {
 
         _agent = GetComponent<NavMeshAgent>();
+
+        _anim = GetComponentInChildren<Animator>();
+
 
     }
 
@@ -32,9 +37,17 @@ public class Player : MonoBehaviour
 
                 //Debug.Log("Hit: " + hitInfo.point);
                 _agent.SetDestination(hitInfo.point);
-
+                _anim.SetBool("Walk", true);
             }
-        } 
+        }
+        var heading = _agent.destination - transform.position;
+
+        Debug.Log(heading);
         
+        if (heading.x == 0f)
+        {
+
+            _anim.SetBool("Walk", false);
+        }
     }
 }
