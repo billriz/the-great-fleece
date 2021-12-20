@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
 
     private Animator _anim;
 
-    
+        
     // Start is called before the first frame update
     void Start()
     {
@@ -34,17 +34,15 @@ public class Player : MonoBehaviour
 
             if (Physics.Raycast(rayOrigin, out hitInfo))
             {
-
-                //Debug.Log("Hit: " + hitInfo.point);
                 _agent.SetDestination(hitInfo.point);
                 _anim.SetBool("Walk", true);
-            }
+                Debug.Log("Point: " + _agent.destination);
+            }           
         }
-        var heading = _agent.destination - transform.position;
 
-        Debug.Log(heading);
+        var distance = (_agent.destination - transform.position);            
         
-        if (heading.x == 0f)
+        if (distance.x == 0f)
         {
 
             _anim.SetBool("Walk", false);
