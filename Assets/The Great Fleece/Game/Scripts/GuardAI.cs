@@ -11,7 +11,7 @@ public class GuardAI : MonoBehaviour
     List<Transform> wayPoints;
     [SerializeField]
     private int _targetPos;
-
+    
     private NavMeshAgent _agent;
     private Animator _anim;
 
@@ -37,12 +37,12 @@ public class GuardAI : MonoBehaviour
             {
                 _agent.SetDestination(wayPoints[_targetPos].position);
                 _anim.SetBool("Walk", true);
-            }               
-            
+            }
 
-            var distance = (wayPoints[_targetPos].position - transform.position);
-
-            if (distance.x == 0f && _atTarget == false)
+            float distance = Vector3.Distance(transform.position, wayPoints[_targetPos].position);
+           // var distance = (wayPoints[_targetPos].position - transform.position);
+            Debug.Log("distance: " + distance);
+            if (distance < 2 && _atTarget == false)
             {
                if (wayPoints.Count < 2)
                 {
