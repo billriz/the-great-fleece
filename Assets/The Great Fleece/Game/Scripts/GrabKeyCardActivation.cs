@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VoiceOverTrigger : MonoBehaviour
+public class GrabKeyCardActivation : MonoBehaviour
 {
-  
     [SerializeField]
-    private AudioClip _voClip;
+    private GameObject _grabKeyCardCutScene;
 
 
     private void OnTriggerEnter(Collider other)
@@ -14,9 +13,11 @@ public class VoiceOverTrigger : MonoBehaviour
         if (other.tag == "Player")
         {
 
-            AudioManager.Instance.PlayVoiceOver(_voClip);
-            // AudioSource.PlayClipAtPoint(_voClip, Camera.main.transform.position);
+            _grabKeyCardCutScene.SetActive(true);
+            GameManager.Instance.HasCard = true;
 
         }
     }
+
+
 }

@@ -44,7 +44,7 @@ public class GuardAI : MonoBehaviour
 
             float distance = Vector3.Distance(transform.position, wayPoints[_targetPos].position);
            // var distance = (wayPoints[_targetPos].position - transform.position);
-            Debug.Log("distance: " + distance);
+            //Debug.Log("distance: " + distance);
             if (distance < 2 && _atTarget == false)
             {
                if (wayPoints.Count < 2)
